@@ -1,0 +1,263 @@
+// Modificamos colores
+$fondo: #f2f2f2;
+$primary: #2171F1;
+$danger: #ED4C54;
+$success: #436b10;
+$warning: #FAD24D;
+
+$warning-light: #FAE7B5;
+$naranja: #FF5B62;
+$morado: #342c68;
+$gris-claro: #F2F2F2;
+
+
+$font-family: "Open Sans", Arial, Sans-serif;
+$font-family2: "Oswald", Sans-serif;
+$font-size: 16px;
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background: $fondo;
+	font-size: $font-size;
+	font-family: $font-family;
+}
+
+// Aplciamos estilos para el efecto scroll
+html{
+    scroll-behavior: smooth;
+}
+.contentScroll{
+    scroll-margin-top: 70px;
+}
+
+// Inicio
+.card{
+    transition: .3s all ease;
+    :hover{
+        flex: 2;
+        background-color: $gris-claro;
+    }
+}
+
+// Galería
+.galeria{
+    display: flex;
+    width: auto;
+    height: 400px;
+    img{
+        width: 0px;
+        flex-grow: 1;
+        object-fit: cover;
+        filter: brightness(80%);
+        transition: .7s ease;
+    }
+    img:hover{
+        width: 500px;
+        opacity: 1;
+        filter: brightness(130%);
+    }
+}
+
+//Videos
+.containerVideo {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 15px;
+    align-items: flex-start;
+    padding: 5px 5%;
+    background: $gris-claro;
+    // border-radius: 5px;
+}
+
+.containerVideo .main-video {
+    // background: #fff;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.containerVideo .main-video video {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.containerVideo .main-video .title {
+    color: #333;
+    font-size: 23px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.containerVideo .video-list {
+    background: #fff;
+    border-radius: 5px;
+    height: 520px;
+    overflow-y: scroll;
+}
+
+.containerVideo .video-list::-webkit-scrollbar {
+    width: 7px;
+}
+
+.containerVideo .video-list::-webkit-scrollbar-track {
+    background: #ccc;
+    border-radius: 50px;
+}
+
+.containerVideo .video-list::-webkit-scrollbar-thumb {
+    background: #666;
+    border-radius: 50px;
+}
+
+.containerVideo .video-list .vid video {
+    width: 100px;
+    border-radius: 5px;
+}
+
+.containerVideo .video-list .vid {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #f7f7f7;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, .1);
+    cursor: pointer;
+}
+
+.containerVideo .video-list .vid:hover {
+    background: #eee;
+}
+
+.containerVideo .video-list .vid.active {
+    background: #ED4C54;
+}
+
+.containerVideo .video-list .vid.active .title {
+    color: #fff;
+}
+
+.containerVideo .video-list .vid .title {
+    color: #333;
+    font-size: 17px;
+}
+
+// Precios
+table{
+    width: auto;
+    font-weight: 100;
+    border-collapse: collapse;
+    overflow: hidden;
+    th, td{
+        background-color: #ffffff33;
+        padding: 15px;
+        color: black;
+    }
+    thead th{
+        background-color: $warning;
+        th{
+            text-align: left;
+        }
+    }
+    tbody tr:hover{
+        background-color: $warning-light;
+    }
+    tbody td{
+        position: relative;
+        
+    }
+    tbody td:hover:before{
+        content: "";
+        position: absolute;
+        background-color: $warning-light;
+        left: 0;
+        right: 0;
+        top: -9999px;
+        bottom: -9999px;
+        z-index: -1;
+    }
+}
+
+// Footer
+footer {
+    position: relative;
+    width: 100%;
+    background: #ED4C54;
+    min-height: 100px;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .social_icon, 
+    .menu {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 10px 0;
+        flex-wrap: wrap;
+
+        li {
+            list-style: none;
+
+            a {
+                font-size: 2em;
+                color: #F2F2F2;
+                margin: 0 10px;
+                display: inline-block;
+                transition: 0.5s;
+
+                &:hover {
+                    transform: translateY(-10px);
+                }
+            }
+        }
+    }
+
+    .menu {
+        li {
+            a {
+                font-size: 1.2em;
+                color: #fff;
+                margin: 0 10px;
+                display: inline-block;
+                text-decoration: none;
+                opacity: 0.75;
+
+                &:hover {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    p {
+        color: #fff;
+        text-align: center;
+        margin-top: 15px;
+        margin-bottom: 10px;
+        font-size: 1.1em;
+    }
+}
+
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+// Medias
+@media (max-width:991px){
+    .containerVideo{
+        grid-template-columns: 1.5fr 1fr;
+        padding: 10px;
+    }
+}
+
+@media (max-width : 768px){
+    .containerVideo{
+        grid-template-columns: 1fr;
+    }
+}
